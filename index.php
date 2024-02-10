@@ -41,18 +41,19 @@ include 'global/conexion.php';
             $sentencia=$pdo->prepare("SELECT * FROM `tblproductos`");
             $sentencia->execute();
             $listaProductos=$sentencia->fetchAll(PDO::FETCH_ASSOC);
-            print_r($listaProductos);
+            /* print_r($listaProductos); */
             ?>
             <?php foreach($listaProductos as $producto){ ?>
-
-            <?php } ?>
-            <div class="col-3">
+                <div class="col-3">
                 <div class="card">
                     <img
-                    title="Titulo del producto" 
+                    title="<?php echo $producto['Nombre'];?>" 
                     class="card-img-top"
+                    data-toggle="popover"
+                    data-content="<?php echo $producto['Descripcion'];?>"
+                    data-trigger="hover"
                     src="<?php echo $producto['Imagen'];?>"
-                    alt="titulo">
+                    alt="<?php echo $producto['Nombre'];?>">
                     <div class="card-body">
                         <span><?php echo $producto['Nombre'];?></span>
                         <h5 class="card-title"><?php echo $producto['Precio']?>$</h5>
@@ -66,7 +67,13 @@ include 'global/conexion.php';
                     </div>
                 </div>
             </div>
+            <?php } ?>
         </div>
     </div>
+    <script>
+    $(function () {
+        $('[data-toggle="popover"]').popover()
+    })
+    </script>
 </body>
 </html>
