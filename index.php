@@ -6,10 +6,13 @@ include 'templates/cabecera.php'
 ?>
 
 <br>
+    <?php if($mensaje!=""){?>
         <div class="alert alert-success">
             <?php echo $mensaje; ?>
-            <a href="#" class="badge badge-success">Ver Carrito</a>
+
+            <a href="mostrarCarrito.php" class="badge badge-success">Ver Carrito</a>
         </div>
+        <?php }?>
         <div class="row">
             <?php
             $sentencia=$pdo->prepare("SELECT * FROM `tblproductos`");
