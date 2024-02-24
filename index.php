@@ -60,6 +60,4 @@ include 'templates/cabecera.php'
         $('[data-toggle="popover"]').popover()
     })
     </script>
-<?php
-include 'templates/pie.php';
-?>
+<?php include 'templates/pie.php';?>
